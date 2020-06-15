@@ -17,7 +17,7 @@ on:
 env:
   REPO_URL: https://github.com/chongshengB/rt-n56u
   REPO2_URL: https://github.com/wysizhh/wahaha
-  SSH_ACTIONS: true
+  SSH_ACTIONS: false
   TNAME: MAC2600R-5.0
   
 jobs:
@@ -116,7 +116,7 @@ jobs:
         sudo ./clear_tree
         sudo ./build_firmware_modify $TNAME 0
         sudo mv -f images/*.trx /opt/images/
-        sudo mv -f ./.config /opt/images/
+        sudo cp -f ./.config /opt/images/
         
     - name : Upload packages
       uses: actions/upload-artifact@master
