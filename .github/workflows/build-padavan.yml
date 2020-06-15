@@ -15,7 +15,7 @@ on:
     types: [started]
 
 env:
-  SSH_ACTIONS: false
+  SSH_ACTIONS: true
   
 jobs:
   build:
@@ -108,6 +108,13 @@ jobs:
         #echo "自定义项=y" >> .config
         #########################################################################################       
 
+    - name: SSH connection to Actions
+      uses: P3TERX/debugger-action@master
+      if: env.SSH_ACTIONS == 'true' || contains(github.event.action, 'ssh')
+
+    - name: Build Firmware
+      run: |
+        cd /opt/rt-n56u/trunk
         sudo ./clear_tree
         sudo ./build_firmware_modify $TNAME 0
         sudo mv -f images/*.trx /opt/images/
