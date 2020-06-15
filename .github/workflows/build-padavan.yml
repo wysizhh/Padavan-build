@@ -15,10 +15,7 @@ on:
     types: [started]
 
 env:
-  REPO_URL: https://github.com/chongshengB/rt-n56u
-  REPO2_URL: https://github.com/wysizhh/wahaha
   SSH_ACTIONS: false
-  TNAME: MAC2600R-5.0
   
 jobs:
   build:
@@ -39,16 +36,21 @@ jobs:
         pkg-config zlib1g-dev libgmp3-dev libmpc-dev libmpfr-dev libncurses5-dev libltdl-dev wget
         
     - name: Clone source code
+      env:
+        REPO_URL: https://github.com/chongshengB/rt-n56u
+        REPO2_URL: https://github.com/wysizhh/wahaha
       run: |
         git clone --depth=1 $REPO_URL /opt/rt-n56u
-        git clone --depth=1 $REPO2_URL /opt/tmp/
-        cd /opt/rt-n56u/
-        cp -fr ../tmp/trunk .
+        git clone --depth=1 $REPO2_URL /opt/rt-n56u1/
+        cd /opt/rt-n56u
+        cp -fr ../rt-n56u1/trunk .
         cd ./toolchain-mipsel
         sh dl_toolchain.sh
         mkdir -p /opt/images/
         
     - name: Load Setting
+      env:
+        TNAME: MAC2600R-5.0
       run: |
         cd /opt/rt-n56u/trunk
         if [ ! -f configs/templates/$TNAME.config ] ; then
