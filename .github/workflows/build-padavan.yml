@@ -34,8 +34,7 @@ jobs:
       run: |
         git clone --depth=1 https://github.com/chongshengB/rt-n56u.git /opt/rt-n56u
         git remote add origin https://github.com/wysizhh/wahaha.git
-        git pull origin master
-        git push origin master        
+        git pull origin master        
         cd /opt/rt-n56u/toolchain-mipsel
         sh dl_toolchain.sh
         mkdir -p /opt/images/
