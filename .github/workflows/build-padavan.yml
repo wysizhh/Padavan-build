@@ -41,9 +41,9 @@ jobs:
         REPO2_URL: https://github.com/wysizhh/wahaha
       run: |
         git clone --depth=1 $REPO_URL /opt/rt-n56u
-        git clone --no-checkout $REPO2_URL /opt1
+        git clone --depth=1 $REPO2_URL /opt/rt-n56u1
         cd /opt/rt-n56u
-        cp -fr /opt1/trunk .
+        cp -fr /opt/rt-n56u1/trunk .
         cd ./toolchain-mipsel
         sh dl_toolchain.sh
         mkdir -p /opt/images/
