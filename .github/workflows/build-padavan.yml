@@ -43,7 +43,7 @@ jobs:
         git clone --depth=1 $REPO2_URL /opt/rt-n56u1
         git clone --depth=1 $REPO_URL /opt/rt-n56u
         cp -fr /opt/rt-n56u1/trunk /opt/rt-n56u/
-        cd /opt/rt-n56u1/toolchain-mipsel
+        cd /opt/rt-n56u/toolchain-mipsel
         sh dl_toolchain.sh
         mkdir -p /opt/images/
         
